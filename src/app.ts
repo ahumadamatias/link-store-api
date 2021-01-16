@@ -1,5 +1,6 @@
-import express, { Application } from "express";
+import express, { Application, Router } from "express";
 import morgan from "morgan";
+import { routes_bank } from "./routes/routes-bank";
 
 export class App {
     private app: Application;
@@ -13,6 +14,16 @@ export class App {
     public async listen(): Promise<void> {
         await this.app.listen(this.app.get('port'));
         console.log('Server on port', this.app.get('port'));
+    }
+
+    public getApp(): Application {
+        return this.app;
+    }
+
+    public getRoutes(): void {
+        routes_bank.forEach(async(route: Router) => {
+            await this.app.use('/api', route)
+        })
     }
 
     private settings() {
