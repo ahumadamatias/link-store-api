@@ -1,6 +1,7 @@
-import express, { Application, Router } from "express";
-import morgan from "morgan";
-import { routes_bank } from "./routes/routes-bank";
+import express, { Application, Router } from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import { routes_bank } from './routes/routes-bank';
 
 export class App {
     private app: Application;
@@ -9,6 +10,7 @@ export class App {
         this.app = express();
         this.settings();
         this.middlewares();
+        this.getRoutes();
     }
 
     public async listen(): Promise<void> {
@@ -21,13 +23,14 @@ export class App {
     }
 
     public getRoutes(): void {
-        routes_bank.forEach(async(route: Router) => {
-            await this.app.use('/api', route)
-        })
+        this.app.use(bodyParser.json());
+        routes_bank.forEach(async (route: Router) => {
+            await this.app.use('/api', route);
+        });
     }
 
     private settings() {
-        this.app.set('port', this.port || process.env.PORT || 3000)
+        this.app.set('port', this.port || process.env.PORT || 3000);
     }
 
     private middlewares(): void {

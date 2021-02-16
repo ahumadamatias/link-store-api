@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "root",
+        "password": "m981981981a",
+        "database": "linkstore",
+        "host": "127.0.0.1",
+        "port": "3307",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": "m981981981a",
+        "database": "linkstore",
+        "host": "127.0.0.1",
+        "port": "3307",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "root",
+        "password": "m981981981a",
+        "database": "linkstore",
+        "host": "127.0.0.1",
+        "port": "3307",
+        "dialect": "mysql"
+    }
+}

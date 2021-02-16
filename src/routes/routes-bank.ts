@@ -1,7 +1,4 @@
-import linkRouter from "./link.routes";
-import userRouter from "./user.routes";
+import linkRouter from './link.routes';
+import userRouter from './authentication.routes';
 
-export const routes_bank = [
-    linkRouter,
-    userRouter
-]
+export const routes_bank = [linkRouter, userRouter];
